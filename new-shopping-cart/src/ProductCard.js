@@ -3,12 +3,15 @@ import { Card, CardImg, CardText, CardBody, //CardDeck, CardColumns,
     CardTitle, CardSubtitle, 
     ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+
 class ProductCard extends Component {
     constructor(props) {
         super(props);
     
     this.toggle = this.toggle.bind(this);
     this.state= {dropdownOpen: false};
+
+    this.handleClick = this.handleClick.bind(this);
 }
 
 toggle() {
@@ -16,6 +19,11 @@ toggle() {
       dropdownOpen: !this.state.dropdownOpen
     });
   }
+
+  handleClick(){
+    
+  }
+
 
 render () {
 
@@ -32,7 +40,7 @@ render () {
                     <DropdownToggle caret>Add to Cart</DropdownToggle>
                     <DropdownMenu>
                         <DropdownItem header>Size</DropdownItem>
-                        <DropdownItem>S</DropdownItem>
+                        <DropdownItem onClick={this.handleClick}>S</DropdownItem>
                         <DropdownItem>M</DropdownItem>
                         <DropdownItem>L</DropdownItem>
                         <DropdownItem>XL</DropdownItem>

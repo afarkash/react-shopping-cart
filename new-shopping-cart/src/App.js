@@ -34,6 +34,7 @@ import {
   //CardTitle, CardSubtitle, Button 
 } from 'reactstrap';
 import ProductCard from './ProductCard'
+import Cart from './Cart'
 
 const App = ({products}) => {
   const skus = Object.keys(products);
@@ -57,12 +58,14 @@ const App = ({products}) => {
           price = {products[sku].price} />)
         }
   })
-  
 
   return (
-    <CardColumns>
-      {items}
-    </CardColumns>
+    <div>
+      <Cart />
+      <CardColumns>
+        {items}
+      </CardColumns>
+    </div>
   )
 };
 
