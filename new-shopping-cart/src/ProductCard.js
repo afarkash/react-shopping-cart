@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, //CardDeck, CardColumns,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+    CardTitle, CardSubtitle, 
+    ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class ProductCard extends Component {
-    /*constructor(props) {
+    constructor(props) {
         super(props);
-    }*/
+    
+    this.toggle = this.toggle.bind(this);
+    this.state= {dropdownOpen: false};
+}
+
+toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 
 render () {
 
@@ -17,7 +27,18 @@ render () {
                 <h4><CardTitle>{this.props.title}</CardTitle></h4>
                 <h5><CardSubtitle>{this.props.currencyFormat}{this.props.price}</CardSubtitle></h5>
                 <CardText>{this.props.isFreeShipping}</CardText>
-                <Button>Add to Cart</Button>
+                
+                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <DropdownToggle caret>Add to Cart</DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem header>Size</DropdownItem>
+                        <DropdownItem>S</DropdownItem>
+                        <DropdownItem>M</DropdownItem>
+                        <DropdownItem>L</DropdownItem>
+                        <DropdownItem>XL</DropdownItem>
+                    </DropdownMenu>
+            </ButtonDropdown>
+            
             </CardBody>
         </Card>
         )
